@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://1op41o3163f3"]
+
+[ext_resource type="PackedScene" uid="uid://p5l4ybkhwkhd" path="res://player_manager.tscn" id="1_o0d4i"]
+[ext_resource type="PackedScene" uid="uid://bobitufv7022a" path="res://terrain.tscn" id="2_taoif"]
+[ext_resource type="PackedScene" uid="uid://cfdtsuv0jbvqj" path="res://unit.tscn" id="3_wocw5"]
+[ext_resource type="PackedScene" uid="uid://b3a5lju2s0olw" path="res://selection_rectangle.tscn" id="4_8b41r"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="PlayerManager" parent="." instance=ExtResource("1_o0d4i")]
+
+[node name="Terrain" parent="." instance=ExtResource("2_taoif")]
+
+[node name="Unit" parent="." instance=ExtResource("3_wocw5")]
+
+[node name="SelectionRectangle" parent="." instance=ExtResource("4_8b41r")]
