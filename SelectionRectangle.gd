@@ -11,12 +11,13 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+
 	if Input.is_action_pressed("mouse_left"):
 		if (!isDrawing):
 			startingBoxPosition = get_local_mouse_position()
 			isDrawing = true
-			
-			
+
+
 		if (isDrawing):
 			$ColorRect.position = startingBoxPosition
 			$ColorRect.size = get_local_mouse_position() - startingBoxPosition
@@ -26,16 +27,9 @@ func _process(delta):
 				$ColorRect.size.x =  startingBoxPosition.x - get_local_mouse_position().x
 			if (get_local_mouse_position().y - startingBoxPosition.y < 0):
 				$ColorRect.position.y = get_local_mouse_position().y
-				#$ColorRect.size.x =   get_local_mouse_position().x - startingBoxPosition.x
 				$ColorRect.size.y =  startingBoxPosition.y - get_local_mouse_position().y
-				
-				
-				
-	
-	
+
 	if Input.is_action_just_released("mouse_left"):
 		isDrawing = false
 		$ColorRect.position = Vector2.ZERO
 		$ColorRect.size = Vector2.ZERO
-		
-	
