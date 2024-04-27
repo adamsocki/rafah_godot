@@ -5,6 +5,7 @@
 [node name="DebugManager" type="Node"]
 script = ExtResource("1_kss0i")
 debugMode = true
+vSync = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 offset_left = 28.0

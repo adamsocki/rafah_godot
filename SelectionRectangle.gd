@@ -3,22 +3,24 @@ extends Node2D
 
 var isDrawing = false
 var startingBoxPosition : Vector2
+var selectionRectangle : Node2D
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+var selectionRectangleSize : Vector2
+var selectionRectanglePosition : Vector2
 
+func InitSelectionRectangle():
+	$ColorRect.position = Vector2.ZERO
+	$ColorRect.size = Vector2.ZERO
+	visible = false
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-
+func UpdateSelectionRectangle_Logic(delta):
 	if Input.is_action_pressed("mouse_left"):
 		if (!isDrawing):
 			startingBoxPosition = get_local_mouse_position()
 			isDrawing = true
 
-
 		if (isDrawing):
+			visible = true
 			$ColorRect.position = startingBoxPosition
 			$ColorRect.size = get_local_mouse_position() - startingBoxPosition
 			if (get_local_mouse_position().x - startingBoxPosition.x < 0):
@@ -33,3 +35,7 @@ func _process(delta):
 		isDrawing = false
 		$ColorRect.position = Vector2.ZERO
 		$ColorRect.size = Vector2.ZERO
+
+
+func UpdateSelectionRectangle_Render(delta):
+	pass

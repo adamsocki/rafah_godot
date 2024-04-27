@@ -1,12 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://p5l4ybkhwkhd"]
+[gd_scene load_steps=2 format=3 uid="uid://p5l4ybkhwkhd"]
 
 [ext_resource type="Script" path="res://PlayerManager.gd" id="1_8fra2"]
-[ext_resource type="PackedScene" uid="uid://b3a5lju2s0olw" path="res://selection_rectangle.tscn" id="2_0hwo8"]
 
 [node name="PlayerManager" type="Node"]
 script = ExtResource("1_8fra2")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.34202, 0.939693, 0, -0.939693, 0.34202, 0, 6.00616, 2.01377)
-
-[node name="SelectionRectangle" parent="." instance=ExtResource("2_0hwo8")]

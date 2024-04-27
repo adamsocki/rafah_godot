@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmica4j7ckkxc"]
+
+[ext_resource type="PackedScene" uid="uid://b3a5lju2s0olw" path="res://selection_rectangle.tscn" id="1_a4bof"]
+[ext_resource type="Script" path="res://ui_manager.gd" id="1_jkuau"]
+
+[node name="UIManager" type="Node"]
+script = ExtResource("1_jkuau")
+
+[node name="SelectionRectangle" parent="." instance=ExtResource("1_a4bof")]

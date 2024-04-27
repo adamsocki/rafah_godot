@@ -4,17 +4,15 @@ var playerCamera : Camera3D
 var cameraPanSpeed = 50
 var cameraZoomSpeed = 100
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
+
+
+
+func InitPlayerManager():
 	playerCamera = get_node("Camera3D")
-	
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func UpdatePlayerManager(delta):
 	HandlePlayerInput(delta)
-
-
 
 
 
@@ -33,4 +31,9 @@ func HandlePlayerInput(delta):
 		playerCamera.position += Vector3.UP     * delta * cameraZoomSpeed
 	if Input.is_action_just_pressed("mouse_wheel_down"):
 		playerCamera.position += Vector3.DOWN   * delta * cameraZoomSpeed
-	
+		
+	if Input.is_action_just_pressed("key_q"):
+		playerCamera.position += Vector3.UP     * delta * cameraZoomSpeed
+	if Input.is_action_just_pressed("key_e"):
+		playerCamera.position += Vector3.DOWN   * delta * cameraZoomSpeed
+
