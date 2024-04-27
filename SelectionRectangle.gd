@@ -16,12 +16,21 @@ func _process(delta):
 			startingBoxPosition = get_local_mouse_position()
 			isDrawing = true
 			
+			
 		if (isDrawing):
 			$ColorRect.position = startingBoxPosition
 			$ColorRect.size = get_local_mouse_position() - startingBoxPosition
-			
+			if (get_local_mouse_position().x - startingBoxPosition.x < 0):
+				$ColorRect.position.y = startingBoxPosition.y
+				$ColorRect.position.x = get_local_mouse_position().x
+				$ColorRect.size.x =  startingBoxPosition.x - get_local_mouse_position().x
+			if (get_local_mouse_position().y - startingBoxPosition.y < 0):
+				$ColorRect.position.y = get_local_mouse_position().y
+				#$ColorRect.size.x =   get_local_mouse_position().x - startingBoxPosition.x
+				$ColorRect.size.y =  startingBoxPosition.y - get_local_mouse_position().y
 				
-			
+				
+				
 	
 	
 	if Input.is_action_just_released("mouse_left"):
