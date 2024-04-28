@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://fmspwhoiwreq"]
+
+[node name="action_icon" type="AspectRatioContainer"]
+custom_minimum_size = Vector2(100, 100)
+anchors_preset = -1
+anchor_right = 0.13
+anchor_bottom = 0.231
+offset_right = 0.23999
+offset_bottom = 0.311996
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
