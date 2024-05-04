@@ -12,18 +12,9 @@ func InitSelectionRectangle():
 	$ColorRect.position = Vector2.ZERO
 	$ColorRect.size = Vector2.ZERO
 	visible = false
-	
-func _physics_process(delta):
-	
-	
-	pass
-	
+
 
 func UpdateSelectionRectangle_Logic(delta):
-	
-	
-	
-	
 	if Input.is_action_pressed("mouse_left"):
 		if (!isDrawing):
 			startingBoxPosition = get_local_mouse_position()

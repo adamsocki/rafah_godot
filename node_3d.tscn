@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://1op41o3163f3"]
+[gd_scene load_steps=5 format=3 uid="uid://1op41o3163f3"]
 
 [ext_resource type="PackedScene" uid="uid://dc03ce3ojjnc2" path="res://game_manager.tscn" id="1_ypfmg"]
 [ext_resource type="PackedScene" uid="uid://bobitufv7022a" path="res://terrain.tscn" id="2_taoif"]
 [ext_resource type="PackedScene" uid="uid://cfdtsuv0jbvqj" path="res://unit.tscn" id="3_wocw5"]
+[ext_resource type="PackedScene" uid="uid://cnfncfxyhd8vr" path="res://building.tscn" id="4_n2mn7"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -11,3 +12,6 @@
 [node name="Terrain" parent="." instance=ExtResource("2_taoif")]
 
 [node name="Unit" parent="." instance=ExtResource("3_wocw5")]
+
+[node name="Building" parent="." instance=ExtResource("4_n2mn7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7145, 0, 0)

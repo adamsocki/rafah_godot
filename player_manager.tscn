@@ -1,8 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://p5l4ybkhwkhd"]
+[gd_scene load_steps=7 format=3 uid="uid://p5l4ybkhwkhd"]
 
 [ext_resource type="Script" path="res://PlayerManager.gd" id="1_8fra2"]
 [ext_resource type="Script" path="res://player.gd" id="2_fci14"]
-[ext_resource type="PackedScene" uid="uid://57rorq31rt8" path="res://selector_box.tscn" id="3_4442n"]
+[ext_resource type="Script" path="res://selector_box.gd" id="3_ef5vj"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_edqj6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iqgnc"]
+transparency = 1
+albedo_color = Color(0.466667, 1, 1, 0.0431373)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_55uog"]
 
 [node name="PlayerManager" type="Node"]
 script = ExtResource("1_8fra2")
@@ -19,8 +27,20 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 
 target_position = Vector3(0, 0, 0)
 debug_shape_thickness = 5
 
-[node name="SelectorBox" parent="player" instance=ExtResource("3_4442n")]
+[node name="SelectorBox" type="MeshInstance3D" parent="player"]
+mesh = SubResource("BoxMesh_edqj6")
+surface_material_override/0 = SubResource("StandardMaterial3D_iqgnc")
+script = ExtResource("3_ef5vj")
+
+[node name="Area3D" type="Area3D" parent="player/SelectorBox"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="player/SelectorBox/Area3D"]
+shape = SubResource("BoxShape3D_55uog")
 
 [connection signal="UpdatedPlayerPostion" from="." to="player" method="_on_player_manager_updated_player_postion"]
 [connection signal="releaseSelector" from="player" to="player/SelectorBox" method="_on_player_release_selector"]
 [connection signal="setSelectorPosition" from="player" to="player/SelectorBox" method="_on_player_set_selector_position"]
+[connection signal="AddUnitToSelection" from="player/SelectorBox" to="player" method="_on_selector_box_add_unit_to_selection"]
+[connection signal="RemoveUnitToSelection" from="player/SelectorBox" to="player" method="_on_selector_box_remove_unit_to_selection"]
+[connection signal="body_entered" from="player/SelectorBox/Area3D" to="player/SelectorBox" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="player/SelectorBox/Area3D" to="player/SelectorBox" method="_on_area_3d_body_exited"]

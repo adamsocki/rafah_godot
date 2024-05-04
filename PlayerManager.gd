@@ -7,6 +7,7 @@ var cameraZoomSpeed = 10
 #var player
 
 
+
 signal UpdatedPlayerPostion(newPosition)
 
 

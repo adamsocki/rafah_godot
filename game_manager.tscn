@@ -11,6 +11,7 @@ script = ExtResource("1_pd270")
 [node name="PlayerManager" parent="." instance=ExtResource("2_agxi0")]
 
 [node name="DebugManager" parent="." instance=ExtResource("3_5ypgj")]
+vSync = false
 
 [node name="UIManager" parent="." instance=ExtResource("4_rlxub")]
 
