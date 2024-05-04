@@ -21,7 +21,7 @@ func _physics_process(delta):
 func _on_player_set_selector_position(updatedPosition):
 	if (!isSelecting):
 		startingPosition = updatedPosition
-		startingPosition.y = 1
+		startingPosition.y = updatedPosition.y + 1
 		isSelecting = true
 	else:
 		scale.x = updatedPosition.x - startingPosition.x

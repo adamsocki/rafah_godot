@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://jetghnhxee6i"]
+
+[ext_resource type="Script" path="res://managers/building_manager.gd" id="1_fq1t3"]
+[ext_resource type="PackedScene" uid="uid://cnfncfxyhd8vr" path="res://building.tscn" id="2_n18mj"]
+
+[node name="BuildingManager" type="Node"]
+script = ExtResource("1_fq1t3")
+
+[node name="DebugInitNode" type="Node3D" parent="."]
+
+[node name="Building" parent="DebugInitNode" instance=ExtResource("2_n18mj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.1345, 0, -7.02766)

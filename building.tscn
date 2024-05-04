@@ -1,8 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://cnfncfxyhd8vr"]
+[gd_scene load_steps=5 format=3 uid="uid://cnfncfxyhd8vr"]
+
+[ext_resource type="Script" path="res://building.gd" id="1_5vla5"]
+[ext_resource type="Material" uid="uid://bshf6d0kixoav" path="res://materials/selected_mat_unit.tres" id="2_8h6oi"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qe4sx"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_4q6qu"]
 
-[node name="Building" type="Node3D"]
+[node name="Building" type="StaticBody3D"]
+script = ExtResource("1_5vla5")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_qe4sx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
 mesh = SubResource("SphereMesh_4q6qu")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_8h6oi")

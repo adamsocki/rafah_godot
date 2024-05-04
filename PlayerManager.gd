@@ -9,6 +9,7 @@ var cameraZoomSpeed = 10
 
 
 signal UpdatedPlayerPostion(newPosition)
+signal SelectBuilding(building)
 
 
 

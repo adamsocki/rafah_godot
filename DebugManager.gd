@@ -1,6 +1,7 @@
 extends Node
 
 signal guiTrigger(showGui)
+signal DebugInitTrigger(debugInit)
 
 @export_group("Debug Properties")
 @export var debugMode: bool
@@ -11,6 +12,9 @@ signal guiTrigger(showGui)
 @export_group("Debug Properties")
 @export var showGui: bool
 
+@export_group("Debug Properties")
+@export var debugInit: bool
+
 func InitDebugManager():
 	if (vSync):
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
@@ -18,6 +22,8 @@ func InitDebugManager():
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 	
 	guiTrigger.emit(showGui)
+	DebugInitTrigger.emit(debugInit)
+	
 		
 	#if (showGui):
 		#

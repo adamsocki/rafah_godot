@@ -1,9 +1,11 @@
 extends Node3D
 
 
-signal castRayViaMouse(position)
-signal setSelectorPosition(position)
+signal castRayViaMouse(pos)
+signal setSelectorPosition(pos)
 signal releaseSelector()
+
+#signal SelectBuilding(building)
 
 
 
@@ -11,6 +13,7 @@ var cameraRay : RayCast3D
 var camera : Camera3D
 
 var unitsUnderSelector = []
+var isSelectorOverBuilding = false
 
 
 # Called when the node enters the scene tree for the first time.
@@ -18,7 +21,6 @@ func _ready():
 	cameraRay = $Camera3D/RayCast3D
 	camera = $Camera3D
 	#pass # Replace with function body.
-
 
 var rayOrigin = Vector3()
 var rayEnd = Vector3()
@@ -37,14 +39,21 @@ func _process(delta):
 	if Input.is_action_pressed("mouse_left"):
 		if intersection.has("position"):
 			setSelectorPosition.emit(intersection["position"])
-			
+
 	if Input.is_action_just_released("mouse_left"):
-		releaseSelector.emit()
-	
+		print(intersection["collider"].name)
+		if intersection.has("collider"): 
+			if intersection["collider"].name == "Building" :
+				print("B")
+				intersection["collider"].isBuildingSelected = true
+				intersection["collider"].SelectBuilding()
+				unitsUnderSelector.clear()
+			else:
+				isSelectorOverBuilding = false
+		releaseSelector.emit() 
 
 func _on_player_manager_updated_player_postion(newPosition):
 	position += newPosition
-
 
 
 
