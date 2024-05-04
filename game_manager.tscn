@@ -13,3 +13,5 @@ script = ExtResource("1_pd270")
 [node name="DebugManager" parent="." instance=ExtResource("3_5ypgj")]
 
 [node name="UIManager" parent="." instance=ExtResource("4_rlxub")]
+
+[connection signal="guiTrigger" from="DebugManager" to="UIManager" method="_on_debug_manager_gui_trigger"]

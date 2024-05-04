@@ -15,3 +15,9 @@ func InitUIManager():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func UpdateUIManager_Logic(delta):
 	$SelectionRectangle.UpdateSelectionRectangle_Logic(delta)
+
+
+
+
+func _on_debug_manager_gui_trigger(showGui):
+	$InGameUI.visible = showGui

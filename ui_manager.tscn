@@ -10,3 +10,5 @@ script = ExtResource("1_jkuau")
 [node name="SelectionRectangle" parent="." instance=ExtResource("1_a4bof")]
 
 [node name="InGameUI" parent="." instance=ExtResource("3_0oo2o")]
+
+[node name="Node3D" type="Node3D" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bobitufv7022a"]
+[gd_scene load_steps=5 format=3 uid="uid://bobitufv7022a"]
 
 [ext_resource type="PackedScene" uid="uid://cyfodutgi52n4" path="res://tree.tscn" id="1_q3jmx"]
 
@@ -7,12 +7,22 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jm855"]
 albedo_color = Color(0.202461, 0.232034, 0.0700315, 1)
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_88ymo"]
+points = PackedVector3Array(1.01587, 0.015873, 1.01587, -1.01587, -0.015873, -1.01587, -1.01587, 0.015873, -1.01587, 1.01587, -0.015873, -1.01587, -1.01587, -0.015873, 1.01587, -1.01587, 0.015873, 1.01587, 1.01587, 0.015873, -1.01587, 1.01587, -0.015873, 1.01587)
+
 [node name="Terrain" type="Node3D"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
+[node name="Ground" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+transform = Transform3D(99.9994, 0, -0.335103, 0, 100, 0, 0.335103, 0, 99.9994, 0, 0, 0)
 mesh = SubResource("PlaneMesh_7avaf")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_jm855")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Ground"]
+transform = Transform3D(99.9994, 0, -0.335103, 0, 100, 0, 0.335103, 0, 99.9994, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_88ymo")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
