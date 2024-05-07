@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bytg4ufe53gg"]
+
+[ext_resource type="Script" path="res://core/RafahGame.gd" id="1_akfqu"]
+
+[node name="RafahGame" type="Node3D"]
+script = ExtResource("1_akfqu")
+
+[node name="RafahPlayers" type="Node3D" parent="."]

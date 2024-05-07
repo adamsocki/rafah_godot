@@ -27,22 +27,19 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 
 target_position = Vector3(0, 0, 0)
 debug_shape_thickness = 5
 
-[node name="SelectorBox" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.733522, 0)
+[node name="SelectorBox" type="MeshInstance3D" parent="player"]
 mesh = SubResource("BoxMesh_edqj6")
-skeleton = NodePath("../player")
 surface_material_override/0 = SubResource("StandardMaterial3D_iqgnc")
 script = ExtResource("3_ef5vj")
 
-[node name="Area3D" type="Area3D" parent="SelectorBox"]
+[node name="Area3D" type="Area3D" parent="player/SelectorBox"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SelectorBox/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="player/SelectorBox/Area3D"]
 shape = SubResource("BoxShape3D_55uog")
 
-[connection signal="UpdatedPlayerPostion" from="." to="player" method="_on_player_manager_updated_player_postion"]
-[connection signal="releaseSelector" from="player" to="SelectorBox" method="_on_player_release_selector"]
-[connection signal="setSelectorPosition" from="player" to="SelectorBox" method="_on_player_set_selector_position"]
-[connection signal="AddUnitToSelection" from="SelectorBox" to="player" method="_on_selector_box_add_unit_to_selection"]
-[connection signal="RemoveUnitToSelection" from="SelectorBox" to="player" method="_on_selector_box_remove_unit_to_selection"]
-[connection signal="body_entered" from="SelectorBox/Area3D" to="SelectorBox" method="_on_area_3d_body_entered"]
-[connection signal="body_exited" from="SelectorBox/Area3D" to="SelectorBox" method="_on_area_3d_body_exited"]
+[connection signal="releaseSelector" from="player" to="player/SelectorBox" method="_on_player_release_selector"]
+[connection signal="setSelectorPosition" from="player" to="player/SelectorBox" method="_on_player_set_selector_position"]
+[connection signal="AddUnitToSelection" from="player/SelectorBox" to="player" method="_on_selector_box_add_unit_to_selection"]
+[connection signal="RemoveUnitToSelection" from="player/SelectorBox" to="player" method="_on_selector_box_remove_unit_to_selection"]
+[connection signal="body_entered" from="player/SelectorBox/Area3D" to="player/SelectorBox" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="player/SelectorBox/Area3D" to="player/SelectorBox" method="_on_area_3d_body_exited"]

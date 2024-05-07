@@ -8,14 +8,15 @@ var cameraZoomSpeed = 10
 
 
 
-signal UpdatedPlayerPostion(newPosition)
-signal SelectBuilding(building)
+#signal UpdatedPlayerPostion(newPosition)
+#signal SelectBuilding(building)
 
+#var SelectedBuilding : Node3D = new("Node3D")
 
 
 func InitPlayerManager():
+	#RafahSignals.SelectEntity.connect
 	pass
-	#player = $player
 
 
 func UpdatePlayerManager(delta):
@@ -46,11 +47,9 @@ func HandlePlayerInput(delta):
 	if Input.is_action_pressed("key_e"):
 		positionToMove += Vector3.DOWN   * delta * cameraZoomSpeed
 		
-	UpdatedPlayerPostion.emit(positionToMove)
+	RafahSignals.UpdatedPlayerPosition.emit(positionToMove)
 	# @TODO: check player distance to floor
-	
-	
-	
-	
-	
-	
+
+
+#func 
+

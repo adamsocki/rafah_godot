@@ -15,9 +15,12 @@ var camera : Camera3D
 var unitsUnderSelector = []
 var isSelectorOverBuilding = false
 
+var selectedBuilding 
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	RafahSignals.UpdatedPlayerPosition.connect(p111)
 	cameraRay = $Camera3D/RayCast3D
 	camera = $Camera3D
 	#pass # Replace with function body.
@@ -39,33 +42,34 @@ func _process(delta):
 	if Input.is_action_pressed("mouse_left"):
 		if intersection.has("position"):
 			setSelectorPosition.emit(intersection["position"])
+		if intersection.has("collider"):
+			if intersection["collider"].name != "Building":
+				selectedBuilding.DeSelectBuilding()
+				selectedBuilding = {}
 
 	if Input.is_action_just_released("mouse_left"):
 		print(intersection["collider"].name)
 		if intersection.has("collider"): 
 			if intersection["collider"].name == "Building" :
 				print("B")
-				intersection["collider"].isBuildingSelected = true
-				intersection["collider"].SelectBuilding()
+				selectedBuilding = intersection["collider"]
+				selectedBuilding.SelectBuilding()
 				unitsUnderSelector.clear()
 			else:
 				isSelectorOverBuilding = false
 		releaseSelector.emit() 
 
-func _on_player_manager_updated_player_postion(newPosition):
+
+func p111(newPosition):
 	position += newPosition
-
-
+	#TestObject f
 
 func _on_selector_box_add_unit_to_selection(unit):
 	unit.isUnderSelector = true
 	unitsUnderSelector.append(unit)
 
 
-
-
 func _on_selector_box_remove_unit_to_selection(unit):
 	unit.isUnderSelector = false
 	var unitIndex = unitsUnderSelector.find(unit)
 	unitsUnderSelector.remove_at(unitIndex)
-	

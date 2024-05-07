@@ -18,6 +18,5 @@ debugInit = true
 
 [node name="BuildingManager" parent="." instance=ExtResource("5_c82gf")]
 
-[connection signal="SelectBuilding" from="PlayerManager" to="BuildingManager" method="_on_player_manager_select_building"]
 [connection signal="DebugInitTrigger" from="DebugManager" to="BuildingManager" method="_on_debug_manager_debug_init_trigger"]
 [connection signal="guiTrigger" from="DebugManager" to="UIManager" method="_on_debug_manager_gui_trigger"]
